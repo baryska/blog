@@ -1,0 +1,27 @@
+body {
+  background-color: rgb(161, 245, 151);
+  font-family: "Square Peg", cursive;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+h1 {
+  text-align: center;
+}
+
+.likes {
+  display: flex;
+}
+
+.likes-thumb {
+  background-color: aqua;
+  border: solid 1px gray;
+  border-radius: 25px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+.likes-text {
+  margin-left: 10px;
+}
