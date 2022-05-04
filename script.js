@@ -10,6 +10,10 @@ fetch("https://6256f156e07d2c9a670fe781.mockapi.io/blog")
       const likes = document.createElement("div");
       likes.className = "likes";
       const image = document.createElement("img");
+      const button = document.createElement("button");
+      button.textContent = "Smazat příspěvek";
+      button.setAttribute("id", data[i].id);
+      button.onclick = (event) => deleteEntry(event.target.id);
       image.setAttribute("src", data[i].image);
       text.textContent = data[i].text;
       const dateFormatted = new Date(data[i].date);
@@ -19,7 +23,17 @@ fetch("https://6256f156e07d2c9a670fe781.mockapi.io/blog")
       <div class="likes-thumb"><img src=/img/thumb.png width="30px">${data[i].likes}</div>
       <span class="likes-text">people like this!</span> 
       `;
-      blog.append(date, image, text, likes);
+      blog.append(date, image, text, likes, button);
       i++;
     }
   });
+
+const deleteEntry = (id) => {
+  fetch(`https://6256f156e07d2c9a670fe781.mockapi.io/blog/${id}`, {
+    method: "DELETE",
+  }).then((odpoved) => {
+    if (odpoved.ok) {
+      window.location.reload();
+    }
+  });
+};
